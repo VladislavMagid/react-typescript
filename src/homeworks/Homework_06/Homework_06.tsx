@@ -15,7 +15,7 @@ function Homework_06() {
     { brand: "Audi", price: 50000, isDiesel: true },
   ];
 
-  const cards = cars.map((car) => {
+  const cards = cars.map((car: Car) => {
     return (
       <div className="cars-cards" key={v4()}>
         <p>Brand: {car.brand}</p>
