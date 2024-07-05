@@ -1,12 +1,8 @@
 import "./styles.css";
 import { v4 } from "uuid";
+import {Car} from "./types";
 
 function Homework_06() {
-  interface Car {
-    brand: string;
-    price: number;
-    isDiesel: boolean;
-  }
   const cars: Car[] = [
     { brand: "BMW", price: 20000, isDiesel: true },
     { brand: "Mercedes", price: 22000, isDiesel: false },
