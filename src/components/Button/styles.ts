@@ -4,8 +4,8 @@ interface StyledButtonProps {
   $isRed?: boolean;
 }
 
-const getButtonColor = (disbled: boolean | undefined, isRed: boolean | undefined) => {
-  if (disbled) {
+const getButtonColor = (disabled: boolean | undefined, isRed: boolean | undefined) => {
+  if (disabled) {
     return "grey";
   } else if (isRed) {
     return "#D04648";

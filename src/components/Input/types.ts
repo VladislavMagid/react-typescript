@@ -6,4 +6,6 @@ export interface InputProps {
   type?: HTMLInputTypeAttribute;
   placeholder?: string;
   label: string;
+  disabled?: boolean;
+  error?: string | undefined;
 }

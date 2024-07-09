@@ -1,12 +1,27 @@
-import {InputProps} from './types';
-import './styles.css';
+import { InputProps } from "./types";
+import { InputWrapper, InputLabel, InputComponent } from "./styles";
 
-function Input({ id, name, type = "text", placeholder, label }: InputProps) {
+function Input({
+  id,
+  name,
+  type = "text",
+  placeholder,
+  label,
+  disabled,
+  error
+}: InputProps) {
   return (
-    <div className='input-wrapper'>
-      <label className='input-label' htmlFor={id}>{label}</label>
-      <input className='input-component' id={id} name={name} type={type} placeholder={placeholder} />
-    </div>
+    <InputWrapper>
+      <InputLabel htmlFor={id}>{label}</InputLabel>
+      <InputComponent
+        id={id}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        disabled={disabled}
+        $error = {error}
+      />
+    </InputWrapper>
   );
 }
 

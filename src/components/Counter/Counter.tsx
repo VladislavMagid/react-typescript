@@ -1,27 +1,23 @@
-import "./styles.css";
+import Button from "components/Button/Button";
 
-import Button from "../Button/Button";
+import { CounterWrapper, ButtonControl, StyledCount } from "./styles";
 
-interface CounterProps {
-  count: number;
-  onPlus: () => void;
-  onMinus: () => void;
-}
+import { CounterProps } from "./types";
 
-function Counter({count, onPlus, onMinus}: CounterProps) {
+function Counter({ count, onPlus, onMinus }: CounterProps) {
   return (
-    <div className="counter-wrapper">
-      <div className="button-control">
+    <CounterWrapper>
+      <ButtonControl>
         <Button name="-" onClick={onMinus} />
-      </div>
-      <p className="count">{count}</p>
-      <div className="button-control">
+      </ButtonControl>
+      <StyledCount>{count}</StyledCount>
+      <ButtonControl>
         <Button name="+" onClick={onPlus} />
-      </div>
+      </ButtonControl>
       {/* Пример работы со стейтом */}
       {/* <button onClick={addAnimal}>Set Animal</button>
       <button onClick={changeUserName}>Change user name</button> */}
-    </div>
+    </CounterWrapper>
   );
 }
 
