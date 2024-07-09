@@ -1,6 +1,8 @@
-import "./styles.css";
 import { v4 } from "uuid";
-import {Car} from "./types";
+import { ReactNode } from "react";
+
+import { Car } from "./types";
+import "./styles.css";
 
 function Homework_06() {
   const cars: Car[] = [
@@ -11,16 +13,26 @@ function Homework_06() {
     { brand: "Audi", price: 50000, isDiesel: true },
   ];
 
-  const cards = cars.map((car: Car) => {
+  const carCards: ReactNode[] = cars.map((carObj: Car) => {
     return (
-      <div className="cars-cards" key={v4()}>
-        <p>Brand: {car.brand}</p>
-        <p>Price: {car.price}</p>
-        <p>Diesel: {car.isDiesel ? "yes" : "no"}</p>
+      <div key={v4()} className="car-card-wrapper">
+        <div className="car-info-container">
+          <p className="car-info-title">Brand:</p>
+          <p className="car-info">{carObj.brand}</p>
+        </div>
+        <div className="car-info-container">
+          <p className="car-info-title">Price:</p>
+          <p className="car-info">{`${carObj.price}$`}</p>
+        </div>
+        <div className="car-info-container">
+          <p className="car-info-title">Fuel type:</p>
+          <p className="car-info">{carObj.isDiesel ? "Diesel" : "Petrol"}</p>
+        </div>
       </div>
     );
   });
-  return <div className="page-wrapper">{cards}</div>;
+
+  return <div className="homework6-wrapper">{carCards}</div>;
 }
 
 export default Homework_06;

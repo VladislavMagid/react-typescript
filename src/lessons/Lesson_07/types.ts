@@ -1,5 +1,5 @@
 export enum WEATHER_CODES {
-    SQ = "SQ",
+    SQ = "SQW",
     PO = "PO",
     FC = "FC",
     BR = "BR",
