@@ -8,10 +8,11 @@ function Button({
   name = "Send",
   onClick,
   disabled = false,
-  isRed = false
+  isRed = false,
+  value 
 }: ButtonProps) {
   return (
-    <StyledButton $isRed={isRed} disabled={disabled} onClick={onClick} type={type}>
+    <StyledButton value={value} $isRed={isRed} disabled={disabled} onClick={onClick} type={type}>
       {/* Если imgSrc === true, то правая часть после && показывается на странице
       Если imgSrc === false, то правая часть после && скрывается */}
       {imgSrc && <ButtonImg src={imgSrc} />}
