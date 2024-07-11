@@ -1,48 +1,46 @@
 import styled from "@emotion/styled";
-import { error } from "console";
+
+import {colors} from 'styles/colors';
 
 interface StyledInputProps {
   $error: string | undefined;
 }
 
-export const InputWrapper = styled("div")`
+export const InputWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
 `;
 
-export const InputLabel = styled("label")`
+export const InputLabel = styled.label`
   font-size: 16px;
-  color: hsl(0, 0%, 44%);
+  color: ${colors.LABEL};
 `;
 
-const getInputColor = (disabled: boolean | undefined) => {
-  if (disabled) {
+const getStyledInputBorder = (
+  disabled: boolean | undefined,
+  error: string | undefined
+) => {
+  if (typeof error === "string") {
+    return colors.ERROR;
+  } else if (disabled) {
     return "grey";
+  } else {
+    return colors.DISABLED;
   }
 };
 
-const getInputBorderColor = (error: string | undefined) => {
-  if (error === "Some error") {
-    return "red";
-  }
-};
-
-export const InputComponent = styled("input")<StyledInputProps>`
+export const StyledInput = styled.input<StyledInputProps>`
   width: 100%;
   height: 50px;
-  border: 1px solid ${({$error}) => getInputBorderColor($error)};
+  border: 1px solid
+    ${({ disabled, $error }) => getStyledInputBorder(disabled, $error)};
   border-radius: 4px;
   padding: 12px;
   outline: none;
-  background-color: ${({ disabled }) => getInputColor(disabled)};
-  cursor: ${({disabled}) => disabled ? "not-allowed" : "auto"};
+
+  &::placeholder {
+    color: ${colors.PLACEHOLDER};
+    font-size: 16px;
+  }
 `;
-
-// export const InputComponent::placeholder = styled ("input::placeholder")`
-// color: #6F6F6F;
-// font-size: 16px;
-// `
-// .input-component::placeholder {
-
-// }

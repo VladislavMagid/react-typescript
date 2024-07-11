@@ -1,5 +1,5 @@
 import { InputProps } from "./types";
-import { InputWrapper, InputLabel, InputComponent } from "./styles";
+import { StyledInput, InputWrapper, InputLabel } from "./styles";
 
 function Input({
   id,
@@ -8,18 +8,24 @@ function Input({
   placeholder,
   label,
   disabled,
-  error
+  error,
+  value,
+  onChange,
 }: InputProps) {
   return (
     <InputWrapper>
       <InputLabel htmlFor={id}>{label}</InputLabel>
-      <InputComponent
+      <StyledInput
+        disabled={disabled}
         id={id}
         name={name}
         type={type}
         placeholder={placeholder}
-        disabled={disabled}
-        $error = {error}
+        $error={error}
+        // value - это значение самого инпута, т.е то значение котрое введет потенциальный пользователь
+        value={value}
+        // onChange - функция, которая срабатывает, когда пользователь что-то вводит в инпут
+        onChange={onChange}
       />
     </InputWrapper>
   );
