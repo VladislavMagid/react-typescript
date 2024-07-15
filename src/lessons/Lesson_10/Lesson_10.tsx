@@ -44,7 +44,6 @@ function Lesson_10() {
     } catch (error: any) {
       setError("Some Network Error");
       openModal();
-    } finally {
     }
   };
 
