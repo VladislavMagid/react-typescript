@@ -1,5 +1,5 @@
 import { InputProps } from "./types";
-import { StyledInput, InputWrapper, InputLabel } from "./styles";
+import { StyledInput, InputWrapper, InputLabel, ErrorContainer } from "./styles";
 
 function Input({
   id,
@@ -27,6 +27,7 @@ function Input({
         // onChange - функция, которая срабатывает, когда пользователь что-то вводит в инпут
         onChange={onChange}
       />
+      {!!error && <ErrorContainer>{error}</ErrorContainer>}
     </InputWrapper>
   );
 }
