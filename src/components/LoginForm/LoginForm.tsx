@@ -62,7 +62,7 @@ function LoginForm() {
           type="text"
           placeholder="Enter your email"
           label="Email"
-          value={formik.values.email}
+          value={formik.values[LOGIN_FORM_NAMES.EMAIL]}
           onChange={formik.handleChange}
           error={formik.errors[LOGIN_FORM_NAMES.EMAIL]}
         />
