@@ -10,7 +10,9 @@ import { LOGIN_FORM_NAMES } from "./types";
 
 function LoginForm() {
   const validationSchema = Yup.object().shape({
-    [LOGIN_FORM_NAMES.EMAIL]: Yup.string().required("Email field is required").email("This field should be in email format"),
+    [LOGIN_FORM_NAMES.EMAIL]: Yup.string()
+      .required("Email field is required")
+      .email("This field should be in email format"),
     [LOGIN_FORM_NAMES.PASSWORD]: Yup.string()
       .min(5, "Password field should contain minimum 5 symobols")
       .max(15, "Password field should contain maximum 15 symobols")
@@ -22,9 +24,9 @@ function LoginForm() {
       [LOGIN_FORM_NAMES.PASSWORD]: "",
     },
     validationSchema: validationSchema,
-    validateOnMount:false,
-    validateOnChange:false,
-  
+    validateOnMount: false,
+    validateOnChange: false,
+
     onSubmit: (values, helpers) => {
       console.log("submit works");
       console.log(values, helpers);

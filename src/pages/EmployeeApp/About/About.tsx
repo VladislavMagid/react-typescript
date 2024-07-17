@@ -11,7 +11,7 @@ function About() {
 
   const goBack = () => {
     navigate(-1);
-  }
+  };
   return (
     <PageWrapper>
       Information about company
