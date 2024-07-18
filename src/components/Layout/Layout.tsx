@@ -1,3 +1,8 @@
+import { APP_ROUTES } from "constants/routes";
+import { v4 } from "uuid";
+
+import { LayoutProps } from "./types";
+
 import {
   LayoutWrapper,
   Header,
@@ -11,13 +16,43 @@ import {
   FooterNavigation,
   FooterLink,
 } from "./styles";
-import { LayoutProps } from "./types";
 
 function Layout({ children }: LayoutProps) {
+  const linksRoutes = {
+    [APP_ROUTES.HOME]: "Home",
+    [APP_ROUTES.CONTACT_US]: "Contact Us",
+    [APP_ROUTES.ABOUT]: "About",
+    [APP_ROUTES.CLIENTS]: "Clients",
+    [APP_ROUTES.LOGIN]: "Login",
+  };
+
+  const headerLinks = Object.keys(linksRoutes).map((appRoute: string) => {
+    return (
+      <Link
+        key={v4()}
+        style={({ isActive }) => ({
+          fontWeight: isActive ? "bold" : "normal",
+          textDecoration: isActive ? "underline" : "none",
+        })}
+        to={appRoute}
+      >
+        {linksRoutes[appRoute as keyof typeof linksRoutes]}
+      </Link>
+    );
+  });
+
+  const footerLinks = Object.keys(linksRoutes).map((appRoute: string) => {
+    return (
+      <FooterLink key={v4()} to={appRoute}>
+        {linksRoutes[appRoute as keyof typeof linksRoutes]}
+      </FooterLink>
+    );
+  });
+
   return (
     <LayoutWrapper>
       <Header>
-        <Link to="/">
+        <Link to={APP_ROUTES.HOME}>
           <Logo>
             <LogoImg
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxOGDYH2tzlcwZSDpjg0qRGgEHAxVhsKHFUg&s"
@@ -25,53 +60,7 @@ function Layout({ children }: LayoutProps) {
             />
           </Logo>
         </Link>
-        <NavigationContainer>
-          <Link
-            style={({ isActive }) => ({
-              fontWeight: isActive ? "bold" : "normal",
-              textDecoration: isActive ? "underline" : "none",
-            })}
-            to="/"
-          >
-            Home
-          </Link>
-          <Link
-            style={({ isActive }) => ({
-              fontWeight: isActive ? "bold" : "normal",
-              textDecoration: isActive ? "underline" : "none",
-            })}
-            to="/contactUs"
-          >
-            Contact Us
-          </Link>
-          <Link
-            style={({ isActive }) => ({
-              fontWeight: isActive ? "bold" : "normal",
-              textDecoration: isActive ? "underline" : "none",
-            })}
-            to="/about"
-          >
-            About
-          </Link>
-          <Link
-            style={({ isActive }) => ({
-              fontWeight: isActive ? "bold" : "normal",
-              textDecoration: isActive ? "underline" : "none",
-            })}
-            to="/clients"
-          >
-            Clients
-          </Link>
-          <Link
-            style={({ isActive }) => ({
-              fontWeight: isActive ? "bold" : "normal",
-              textDecoration: isActive ? "underline" : "none",
-            })}
-            to="/logIn"
-          >
-            Log In
-          </Link>
-        </NavigationContainer>
+        <NavigationContainer>{headerLinks}</NavigationContainer>
       </Header>
       <Main>{children}</Main>
       <Footer>
@@ -82,11 +71,7 @@ function Layout({ children }: LayoutProps) {
           />
         </FooterLogo>
         <FooterNavigation>
-          <FooterLink to="/">Home</FooterLink>
-          <FooterLink to="/contactUs">Contact Us</FooterLink>
-          <FooterLink to="/about">About</FooterLink>
-          <FooterLink to="/clients">About</FooterLink>
-          <FooterLink to="/logIn">Log In</FooterLink>
+          {footerLinks}
         </FooterNavigation>
       </Footer>
     </LayoutWrapper>
