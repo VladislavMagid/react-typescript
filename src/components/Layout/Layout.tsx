@@ -70,9 +70,7 @@ function Layout({ children }: LayoutProps) {
             alt="App logo"
           />
         </FooterLogo>
-        <FooterNavigation>
-          {footerLinks}
-        </FooterNavigation>
+        <FooterNavigation>{footerLinks}</FooterNavigation>
       </Footer>
     </LayoutWrapper>
   );
