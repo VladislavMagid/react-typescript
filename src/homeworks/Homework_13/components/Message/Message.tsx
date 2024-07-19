@@ -4,7 +4,7 @@ import { BlogManagementContext } from "homeworks/Homework_13/components/BlogMana
 import { MessageWrapper } from "./styles";
 
 function Message() {
-  const post = useContext<string | undefined>(BlogManagementContext);
+  const post = useContext<string>(BlogManagementContext);
   return <MessageWrapper>{post}</MessageWrapper>;
 }
 

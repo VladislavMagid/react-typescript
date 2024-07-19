@@ -3,9 +3,9 @@ import { useState, createContext, ChangeEvent } from "react";
 import Button from "components/Button/Button";
 import Card from "homeworks/Homework_13/components/Card/Card";
 
-import { BlogManagementWrapper, ButtonControl } from "./styles";
+import { BlogManagementWrapper, ButtonControl, PostStyled } from "./styles";
 
-export const BlogManagementContext = createContext<string | undefined>("");
+export const BlogManagementContext = createContext<string>("");
 
 function BlogManagement() {
   const [text, setText] = useState<string>("");
@@ -21,11 +21,10 @@ function BlogManagement() {
   return (
     <BlogManagementWrapper>
       <BlogManagementContext.Provider value={post}>
-        <textarea
+        <PostStyled
           value={text}
           onChange={onChange}
-          style={{ width: "300px", height: "100px" }}
-        ></textarea>
+        ></PostStyled>
         <ButtonControl>
           <Button name="Запостить" onClick={getPost} />
         </ButtonControl>

@@ -14,3 +14,9 @@ export const BlogManagementWrapper = styled.div`
 export const ButtonControl = styled.div`
   width: 300px;
 `;
+
+export const PostStyled = styled.textarea`
+max-width: 300px;
+width: 300px;
+height: 100px;
+`
