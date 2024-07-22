@@ -58,7 +58,7 @@ function App() {
       {/* <Lesson_10/> */}
       {/* <Lesson_11/> */}
       {/* <Lesson_13/> */}
-      <Homework_13/>
+      {/* <Homework_13/> */}
     </BrowserRouter>
   );
 }
